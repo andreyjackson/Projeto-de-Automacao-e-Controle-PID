@@ -17,23 +17,23 @@ será de escolha particular a futura aplicação deste material
 
 COLABORADORES
 Andrey Jackson
+André Queiroz
+Abílio Vinicius
+Bruno Almeida
+Clebson Queiroz
+Carlos Gabriel
+Hylan josé
+Halan Gomes
+José Airton
+Julio César
 Joana Bacellar
+Lucas Almeida
+Mario Kennedy
 Pablo Félix
 Pedro Henrique Mendes
-Mario Kennedy
-Clebson Queiroz
-José Airton
-Halan(ou é Alan) Gomes
 Thiago Paiva
-Carlos Gabriel
+Thales
 Vinicius Almeida
-Bruno Almeida
-Thales (não sei escrever o sobrenome dele)
-Hylan (não sei o sobrenome)
-Lucas Almeida
-André Queiroz
-Julio César
-Abílio Vinicius
 
 STATUS DO PROJETO
 precisando de ajuste porém finalizado
