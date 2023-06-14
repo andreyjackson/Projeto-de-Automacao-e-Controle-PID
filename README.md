@@ -3,38 +3,55 @@ projeto realisado pelo 9° periodo de enguenharia da computação no ano de 2023
 
 PROJETO DE AUTOMAÇÃO PID
 
-OBJETIVO
-Projeto referente a utilização de PID para aquisição da nota referente a VA2
+<details><summary>OBJETIVO</summary>
 
-TECNOLOGIAS UTILIZADAS
+Projeto referente a utilização de PID para aquisição da nota referente a VA2.
+
+</details>
+
+
+<details><summary>TECNOLOGIAS UTILIZADAS</summary>
+
 foram utilizados peças de impressão 3d, madeiras de variados tipos e parafusos com porcas e arruelas para sustentação e mobilidade, arduino e sua respectiva ide de programação (arduino ide) utilizando a linguagem C++ modificada.
 
-INICIALIZAÇÃO
+</details>
+
+<details><summary>INICIALIZAÇÃO</summary>
+
 copiar e passar o código para o arduino ide, lembrando que antes de submeter ter a certeza de que seu arduino uno está devidamente montado e conectado
 
-IMPLEMENTAÇÕES FUTURAS
+</details>
+
+<details><summary>IMPLEMENTAÇÕES FUTURAS</summary>
+
 será de escolha particular a futura aplicação deste material
 
-COLABORADORES
-Andrey Jackson
-André Queiroz
-Abílio Vinicius
-Bruno Almeida
-Clebson Queiroz
-Carlos Gabriel
-Hylan josé
-Halan Gomes
-José Airton
-Julio César
-Joana Bacellar
-Lucas Almeida
-Mario Kennedy
-Pablo Félix
-Pedro Henrique Mendes
-Thiago Paiva
-Thales
-Vinicius Almeida
+</details>
 
+<details><summary>COLABORADORES</summary>
+
+* Andrey Jackson
+* André Queiroz
+* Abílio Vinicius
+* Bruno Almeida
+* Clebson Queiroz
+* Carlos Gabriel
+* Hylan josé
+* Halan Gomes
+* José Airton
+* Julio César
+* Joana Bacellar
+* Lucas Almeida
+* Mario Kennedy
+* Pablo Félix
+* Pedro Henrique Mendes
+* Thiago Paiva
+* Thales Santos
+* Vinicius Almeida
+* Mauro Tony
+* Vinicius de Oliveira
+  
+</details>
 STATUS DO PROJETO
 precisando de ajuste porém finalizado
 
