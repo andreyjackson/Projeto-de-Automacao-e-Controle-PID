@@ -1,0 +1,127 @@
+#include <Servo.h>
+
+#define UMAX_DEG 66       // Ângulo máximo do servo em graus
+#define UMIN_DEG -66      // Ângulo mínimo do servo em graus
+#define UMAX_RAD 1.151    // Ângulo máximo do servo em radianos
+#define UMIN_RAD -1.151   // Ângulo mínimo do servo em radianos
+#define T 0.09            // Tempo de amostragem em segundos
+
+const int echoPin1 = 53;
+const int trigPin1 = 52;
+
+Servo servo;
+
+double setpoint, setpoint_prec;  // Em metros: 30cm --> 0.3m
+double y, y_prec;
+double error;
+double P, I, D, U;
+double I_prec = 0, U_prec = 0, D_prec = 0;
+boolean saturation = false;
+
+double Kp = 5.0;
+double Ki = 0.9;
+double Kd = 1.4;
+
+float measure_1(void);
+void move_servo(int);
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(trigPin1, OUTPUT);
+  pinMode(echoPin1, INPUT);
+  servo.attach(9);
+
+  delay(1000);
+  move_servo(90);
+  delay(2000);
+  setpoint_prec = 0.09; 
+  delay(1000);
+  y_prec = measure_1();         // carrinho
+  delay(1000);
+}
+
+void loop() {
+  setpoint = 0.09; 
+
+  delay(3);
+
+  y = measure_1();                            
+
+  delay(3);
+
+  error = round(100 * (y - setpoint)) * 0.01;   // Em metros
+
+  P = Kp * error;
+
+  if (!saturation)
+    I = I_prec + T * Ki * error;
+
+  D = (Kd / T) * (y - y_prec);
+
+  D = 0.56 * D + 0.44 * D_prec;
+
+  U = P + I + round(100 * D) * 0.01;            // U em radianos
+
+  if (U < UMIN_RAD) {
+    U = UMIN_RAD;
+    saturation = true;
+  } else if (U > UMAX_RAD) {
+    U = UMAX_RAD;
+    saturation = true;
+  } else {
+    saturation = false;
+  }
+
+  U = round(U * 180 / M_PI);                     // Transforma U em graus: -63° < U < 63°
+
+  U = map(U, UMIN_DEG, UMAX_DEG, 24, 156);       // Mapeia o valor calculado de U para o valor correspondente do servo
+
+  if (U < 83 || U > 95 || abs(error) > 0.02) {
+    move_servo(round(U));
+  }
+
+  delay(24);
+
+  Serial.print(setpoint * 100);
+  Serial.print(" ");
+  Serial.print(y * 100);
+  Serial.print(" ");
+  Serial.print(U);
+  Serial.println();
+
+  I_prec = I;
+  y_prec = y;
+  D_prec = D;
+  setpoint_prec = setpoint;
+}
+
+float measure_1(void) {
+  long duration = 0;
+  float distance = 0;
+
+  digitalWrite(trigPin1, LOW);
+  delayMicroseconds(10);
+
+  digitalWrite(trigPin1, HIGH);
+  delayMicroseconds(10);
+
+  digitalWrite(trigPin1, LOW);
+
+  duration = pulseIn(echoPin1, HIGH);
+  distance = (float)duration / 58.2;
+
+  delay(30);
+
+  if (distance > 28) {
+    distance = 28;
+  } else if (distance < 0) {
+    distance = 0;
+  }
+
+  return 0.01 * (distance - 1.5 + 0.5);  // metros
+}
+
+void move_servo(int u) {
+  servo.write(u - map(u, 30, 150, 14, 3));
+}
