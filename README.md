@@ -53,5 +53,5 @@ será de escolha particular a futura aplicação deste material
   
 </details>
 STATUS DO PROJETO
-precisando de ajuste porém finalizado
+Finalizado
 
